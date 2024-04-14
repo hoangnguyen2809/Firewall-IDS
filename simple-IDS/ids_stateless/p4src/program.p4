@@ -132,10 +132,10 @@ control IDS_Ingress(inout headers hdr,
                   inout metadata meta,
                   inout standard_metadata_t standard_metadata) {
     
-    register<bit<32>>(FLOW_ENTRIES) counters;
-    register<bit<1>>(FLOW_ENTRIES) blocked_flows;
-    bit<1> current_flow;
-    bit<PATTERN_WIDTH> hashed_int;
+    register<bit<32>>(FLOW_ENTRIES) counters; //number of packet dropped per flow
+    register<bit<1>>(FLOW_ENTRIES) blocked_flows; 
+    bit<1> current_flow; //bit to check status of current flow
+    bit<PATTERN_WIDTH> hashed_int; // get hashed result from crc32
 
     action increment_counter() {
         bit<PATTERN_WIDTH> temp;
@@ -233,18 +233,14 @@ control IDS_Ingress(inout headers hdr,
 
     apply {
         if (hdr.ipv4.isValid()) {
-            // TODO: Implement the IDS and IPv4 forwarding logic here.
-            // 1. Get the flow status
-            // 2. If the flow isn't blocked:
-            //// 2.a Check the signatures table
-            //// 2.b If there is a miss, perform IPv4 forwarding
-            // 3. If the flow is blocked, increment the corresponding counter and drop the packet         
+            //get flow status
             flows.apply();
+            //check if flow isn't blocked
             if (current_flow == 0)
-                if (signatures.apply().miss)
+                if (signatures.apply().miss)//if signatures apply miss -> perform ipv4 forwarding
                     ipv4_lpm.apply();
             else
-                increment_counter();
+                increment_counter(); //increment number of dropped packets
         }
     }
 }
