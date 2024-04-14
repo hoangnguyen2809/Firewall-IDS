@@ -115,8 +115,8 @@
       "name" : "deparser",
       "id" : 0,
       "source_info" : {
-        "filename" : "/home/p4/simple-switch/program1/p4src/program.p4",
-        "line" : 112,
+        "filename" : "/home/p4/p4-firewall-ids/simple-switch/firewall/p4src/program.p4",
+        "line" : 129,
         "column" : 8,
         "source_fragment" : "MyDeparser"
       },
@@ -137,8 +137,36 @@
       "primitives" : []
     },
     {
-      "name" : "MyIngress.forward",
+      "name" : "NoAction",
       "id" : 1,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "MyIngress.drop",
+      "id" : 2,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "mark_to_drop",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "standard_metadata"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/p4-firewall-ids/simple-switch/firewall/p4src/program.p4",
+            "line" : 62,
+            "column" : 8,
+            "source_fragment" : "mark_to_drop(standard_metadata)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.forward",
+      "id" : 3,
       "runtime_data" : [
         {
           "name" : "egress_port",
@@ -159,7 +187,7 @@
             }
           ],
           "source_info" : {
-            "filename" : "/home/p4/simple-switch/program1/p4src/program.p4",
+            "filename" : "/home/p4/p4-firewall-ids/simple-switch/firewall/p4src/program.p4",
             "line" : 66,
             "column" : 8,
             "source_fragment" : "standard_metadata.egress_spec = egress_port"
@@ -173,18 +201,55 @@
       "name" : "ingress",
       "id" : 0,
       "source_info" : {
-        "filename" : "/home/p4/simple-switch/program1/p4src/program.p4",
+        "filename" : "/home/p4/p4-firewall-ids/simple-switch/firewall/p4src/program.p4",
         "line" : 57,
         "column" : 8,
         "source_fragment" : "MyIngress"
       },
-      "init_table" : "MyIngress.dmac",
+      "init_table" : "MyIngress.firewall",
       "tables" : [
         {
-          "name" : "MyIngress.dmac",
+          "name" : "MyIngress.firewall",
           "id" : 0,
           "source_info" : {
-            "filename" : "/home/p4/simple-switch/program1/p4src/program.p4",
+            "filename" : "/home/p4/p4-firewall-ids/simple-switch/firewall/p4src/program.p4",
+            "line" : 82,
+            "column" : 10,
+            "source_fragment" : "firewall"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "hdr.ethernet.srcAddr",
+              "target" : ["ethernet", "srcAddr"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 256,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [2, 1],
+          "actions" : ["MyIngress.drop", "NoAction"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "__HIT__" : null,
+            "__MISS__" : "MyIngress.dmac"
+          },
+          "default_entry" : {
+            "action_id" : 1,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.dmac",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "/home/p4/p4-firewall-ids/simple-switch/firewall/p4src/program.p4",
             "line" : 69,
             "column" : 10,
             "source_fragment" : "dmac"
@@ -203,7 +268,7 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [1, 0],
+          "action_ids" : [3, 0],
           "actions" : ["MyIngress.forward", "NoAction"],
           "base_default_next" : null,
           "next_tables" : {
@@ -225,8 +290,8 @@
       "name" : "egress",
       "id" : 1,
       "source_info" : {
-        "filename" : "/home/p4/simple-switch/program1/p4src/program.p4",
-        "line" : 91,
+        "filename" : "/home/p4/p4-firewall-ids/simple-switch/firewall/p4src/program.p4",
+        "line" : 108,
         "column" : 8,
         "source_fragment" : "MyEgress"
       },
@@ -277,7 +342,7 @@
       ["standard_metadata", "priority"]
     ]
   ],
-  "program" : "/home/p4/simple-switch/program1/p4src/program.p4i",
+  "program" : "/home/p4/p4-firewall-ids/simple-switch/firewall/p4src/program.p4i",
   "__meta__" : {
     "version" : [2, 23],
     "compiler" : "https://github.com/p4lang/p4c"

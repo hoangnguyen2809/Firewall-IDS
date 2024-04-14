@@ -1,7 +1,7 @@
-# 1 "/home/p4/simple-switch/program1/p4src/program.p4"
+# 1 "/home/p4/p4-firewall-ids/simple-switch/firewall/p4src/program.p4"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "/home/p4/simple-switch/program1/p4src/program.p4"
+# 1 "/home/p4/p4-firewall-ids/simple-switch/firewall/p4src/program.p4"
 /* -*- P4_16 -*- */
 # 1 "/usr/local/share/p4c/p4include/core.p4" 1
 /*
@@ -86,7 +86,7 @@ match_kind {
     /// Longest-prefix match.
     lpm
 }
-# 3 "/home/p4/simple-switch/program1/p4src/program.p4" 2
+# 3 "/home/p4/p4-firewall-ids/simple-switch/firewall/p4src/program.p4" 2
 # 1 "/usr/local/share/p4c/p4include/v1model.p4" 1
 /*
 Copyright 2013-present Barefoot Networks, Inc.
@@ -865,7 +865,7 @@ package V1Switch<H, M>(Parser<H, M> p,
                        ComputeChecksum<H, M> ck,
                        Deparser<H> dep
                        );
-# 4 "/home/p4/simple-switch/program1/p4src/program.p4" 2
+# 4 "/home/p4/p4-firewall-ids/simple-switch/firewall/p4src/program.p4" 2
 
 /*************************************************************************
 *********************** H E A D E R S  ***********************************
@@ -944,8 +944,25 @@ control MyIngress(inout headers hdr,
         default_action = NoAction;
     }
 
+    table firewall{
+        key = {
+            hdr.ethernet.srcAddr: exact;
+        }
+
+        actions = {
+            drop;
+            NoAction;
+        }
+        size = 256;
+        default_action = NoAction;
+    }
+
     apply {
-        dmac.apply();
+        if (firewall.apply().miss)
+        {
+            dmac.apply();
+        }
+
     }
 }
 

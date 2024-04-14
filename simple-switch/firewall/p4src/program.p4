@@ -79,8 +79,25 @@ control MyIngress(inout headers hdr,
         default_action = NoAction;
     }
 
+    table firewall{
+        key = {
+            hdr.ethernet.srcAddr: exact;
+        }
+
+        actions = {
+            drop;
+            NoAction;
+        }
+        size = 256;
+        default_action = NoAction;
+    }
+
     apply {
-        dmac.apply();
+        if (firewall.apply().miss)
+        {
+            dmac.apply();
+        }
+        
     }
 }
 
