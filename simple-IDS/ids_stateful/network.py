@@ -30,6 +30,6 @@ net.mixed()
 
 # Nodes general options
 net.disablePcapDumpAll()
-net.disableLogAll()
+net.enableLogAll()
 net.enableCli()
 net.startNetwork()
