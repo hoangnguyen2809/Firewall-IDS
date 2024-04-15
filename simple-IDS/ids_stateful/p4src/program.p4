@@ -60,11 +60,11 @@ header tcp_t{
 }
 
 header payload_t {
-    // TODO: fill in
+    bit<PATTERN_WIDTH> data;
 }
 
 struct metadata {
-    // TODO: build your metadata struct
+    //empty
 }
 
 struct headers {
@@ -86,18 +86,31 @@ parser IDS_Parser(packet_in packet,
 
     state start {
         packet.extract(hdr.ethernet);
+        //check etherType
         transition select(hdr.ethernet.etherType){
-            TYPE_IPV4: ipv4;
+            TYPE_IPV4: ipv4; //if etherType is ipv4 -> go to state ipv4
             default: accept;
         }
     }
 
     state ipv4 {
-        // TODO: implement the IPv4 Parser
+        packet.extract(hdr.ipv4);
+        //check protocol in ipv4 header
+        transition select(hdr.ipv4.protocol){
+            TYPE_TCP: tcp; //if procotol is tcp -> go to state tcp
+            default: accept;
+        }     
     }
 
     state tcp {
-       // TODO: implement the TCP Parser
+        //extract the tcp header for ports
+        packet.extract(hdr.tcp);
+        transition payload; //go to state payload
+    }
+
+    state payload {
+        packet.extract(hdr.payload); //extract payload
+        transition accept;
     }
 }
 
@@ -119,12 +132,20 @@ control IDS_Ingress(inout headers hdr,
                   inout metadata meta,
                   inout standard_metadata_t standard_metadata) {
     
-    register<bit<32>>(FLOW_ENTRIES) counters;
+    register<bit<32>>(FLOW_ENTRIES) counters; //number of packet dropped per flow
+    register<bit<1>>(FLOW_ENTRIES) blocked_flows; 
+    bit<1> current_flow; //bit to check status of current flow
+    bit<PATTERN_WIDTH> hashed_val; // get hashed result from crc32
 
-    // TODO: Fill in any P4 variables/registeres needed by this control
+    register<bit<FLOW_BIT_WIDTH>>(FLOW_ENTRIES) pattern; //full pattern after concatenating
+    bit<FLOW_BIT_WIDTH> current_pattern; //current pattern
+
 
     action increment_counter() {
-        // TODO: increment the corresponding flow counter
+        bit<PATTERN_WIDTH> temp;
+        counters.read(temp, hashed_val);
+        temp = temp + 1;
+        counters.write(hashed_val, temp);
     }
 
     action drop() {
@@ -132,16 +153,34 @@ control IDS_Ingress(inout headers hdr,
     }
 
     action signature_hit(bit<9> egress_port) {
-        // TODO: Implement the logic when a pattern is found in across consecutive FLOW_PKT_THRESHOLD packets
+        //when a pattern is found in across consecutive FLOW_PKT_THRESHOLD packets
+        standard_metadata.egress_spec = egress_port;
+
+        bit<PATTERN_WIDTH> temp;
+        counters.read(temp, hashed_val);
+        temp = temp + 1;
+        counters.write(hashed_val, temp);
+
+        blocked_flows.write(hashed_val, 1);
+        current_flow = 1;
     }
 
     action get_flow_status() {
-        // TODO: Calculate the index in register array corresponding to this flow
-        // TODO: Read from a register whether the flow is blocked
+        blocked_flows.read(current_flow, hashed_val);
     }
 
     action _build_pattern() {
-        // TODO: Implement the logic to build/concatenate a pattern from the first PATTERN_WIDTH bits in the TCP payload.
+        //Implement the logic to build/concatenate a pattern from the first PATTERN_WIDTH bits in the TCP payload.
+        pattern.read(current_pattern, hashed_val);
+        current_pattern = current_pattern << PATTERN_WIDTH;
+        current_pattern = current_pattern | (bit<FLOW_BIT_WIDTH>)hdr.payload.data;
+        pattern.write(hashed_val, current_pattern);
+    }
+
+    action compute_hashes(ip4Addr_t ipAddr1, ip4Addr_t ipAddr2, bit<16> port1, bit<16> port2){
+        hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0
+        , {ipAddr1, ipAddr2, port1, port2, hdr.ipv4.protocol}
+        , (bit<32>)FLOW_ENTRIES);
     }
 
     // `build_pattern` is a keyless table used to execute a single action: _build_pattern().
@@ -166,7 +205,7 @@ control IDS_Ingress(inout headers hdr,
 
     table signatures {
          key = {
-            // TODO: fill in the key field
+            current_pattern: exact;
         }
 
         actions = {
@@ -207,13 +246,21 @@ control IDS_Ingress(inout headers hdr,
 
     apply {
         if (hdr.ipv4.isValid()) {
-            // TODO: Implement the IDS and IPv4 forwarding logic here.
-            // 1. Get the flow status
-            // 2. If the flow isn't blocked:
-            //// 2.a Build a pattern by concatenating (i) the first PATTERN_WIDTH bits of the TCP payload, and (ii) the known pattern from previous pkts so far.
-            //// 2.b Check the signatures table
-            //// 2.c If there is a miss, perform IPv4 forwarding
-            // 3. If the flow is blocked, increment the corresponding counter and drop the packet       
+            //compute hash
+            compute_hashes(hdr.ipv4.srcAddr, hdr.ipv4.dstAddr, hdr.tcp.srcPort, hdr.tcp.dstPort);
+            //get flow status
+            flows.apply();
+            if (current_flow == 0) // if the flow isn't blocked:
+            {
+                //build pattern by concatenating first PATTERN_WIDTH bits of payload
+                //with known pattern payload
+                build_pattern.apply();
+                if (signatures.apply().miss) //if signatures apply miss -> forward using ipv4
+                    ipv4_lpm.apply();
+            }
+            else
+                increment_counter(); //increment number of dropped packet if hit
+                
         }
     }
 }
