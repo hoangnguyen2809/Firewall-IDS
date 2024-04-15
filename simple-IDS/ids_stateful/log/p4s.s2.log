@@ -1,0 +1,1976 @@
+Warning: you requested the nanomsg event logger, but bmv2 was compiled without -DBMELOG, and the event logger cannot be activated
+Calling target program-options parser
+[01:35:06.951] [bmv2] [D] [thread 12821] Set default default entry for table 'tbl_compute_hashes': IDS_Ingress.compute_hashes - 
+[01:35:06.951] [bmv2] [D] [thread 12821] Set default default entry for table 'IDS_Ingress.flows': IDS_Ingress.get_flow_status - 
+[01:35:06.951] [bmv2] [D] [thread 12821] Set default default entry for table 'IDS_Ingress.build_pattern': IDS_Ingress._build_pattern - 
+[01:35:06.951] [bmv2] [D] [thread 12821] Set default default entry for table 'IDS_Ingress.signatures': NoAction - 
+[01:35:06.951] [bmv2] [D] [thread 12821] Set default default entry for table 'IDS_Ingress.ipv4_lpm': NoAction - 
+[01:35:06.951] [bmv2] [D] [thread 12821] Set default default entry for table 'tbl_increment_counter': IDS_Ingress.increment_counter - 
+Adding interface s2-eth1 as port 1
+[01:35:06.955] [bmv2] [D] [thread 12821] Adding interface s2-eth1 as port 1
+Adding interface s2-eth2 as port 2
+[01:35:06.993] [bmv2] [D] [thread 12821] Adding interface s2-eth2 as port 2
+[01:35:07.029] [bmv2] [I] [thread 12821] Starting Thrift server on port 9091
+[01:35:07.030] [bmv2] [I] [thread 12821] Thrift server was started
+[01:35:07.555] [bmv2] [T] [thread 12931] bm_get_config
+[01:35:07.557] [bmv2] [T] [thread 12931] bm_set_default_action
+[01:35:07.557] [bmv2] [D] [thread 12931] Set default entry for table 'IDS_Ingress.ipv4_lpm': IDS_Ingress.drop - 
+[01:35:07.558] [bmv2] [T] [thread 12931] bm_table_add_entry
+[01:35:07.558] [bmv2] [D] [thread 12931] Entry 0 added to table 'IDS_Ingress.ipv4_lpm'
+[01:35:07.558] [bmv2] [D] [thread 12931] Dumping entry 0
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000202/32
+Action entry: IDS_Ingress.ipv4_forward - a000202,1,
+
+[01:35:07.558] [bmv2] [T] [thread 12931] bm_table_add_entry
+[01:35:07.559] [bmv2] [D] [thread 12931] Entry 1 added to table 'IDS_Ingress.ipv4_lpm'
+[01:35:07.559] [bmv2] [D] [thread 12931] Dumping entry 1
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000000/16
+Action entry: IDS_Ingress.ipv4_forward - 10200,2,
+
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Processing packet received on port 2
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Parser 'parser': start
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.347] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Bytes parsed: 14
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.347] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Bytes parsed: 34
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Extracting header 'payload'
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Parser state 'tcp' has no switch, going to default next state
+[01:35:15.347] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Bytes parsed: 58
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Parser 'parser': end
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.347] [bmv2] [T] [thread 12828] [0.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.347] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Looking up key:
+
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.347] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.347] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.347] [bmv2] [T] [thread 12828] [0.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.347] [bmv2] [T] [thread 12828] [0.0] [cxt 0] hash(base=0, max=4096) = 1216
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.348] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Looking up key:
+
+[01:35:15.348] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.348] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 1216 read value 0
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.348] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Looking up key:
+
+[01:35:15.348] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.348] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 1216 read value 0
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 1216 with value 67372036
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.348] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000000000000000000004040404
+
+[01:35:15.348] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.348] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Action NoAction
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.348] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000202
+
+[01:35:15.348] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 0
+[01:35:15.348] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000202/32
+Action entry: IDS_Ingress.ipv4_forward - a000202,1,
+
+[01:35:15.348] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - a000202,1,
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.348] [bmv2] [T] [thread 12828] [0.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.348] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.348] [bmv2] [D] [thread 12828] [0.0] [cxt 0] Egress port is 1
+[01:35:15.348] [bmv2] [D] [thread 12830] [0.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.348] [bmv2] [D] [thread 12830] [0.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.348] [bmv2] [D] [thread 12830] [0.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.349] [bmv2] [D] [thread 12830] [0.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.349] [bmv2] [D] [thread 12830] [0.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.349] [bmv2] [D] [thread 12830] [0.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.349] [bmv2] [D] [thread 12830] [0.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.349] [bmv2] [D] [thread 12830] [0.0] [cxt 0] Deparsing header 'payload'
+[01:35:15.349] [bmv2] [D] [thread 12830] [0.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.349] [bmv2] [D] [thread 12833] [0.0] [cxt 0] Transmitting packet of size 58 out of port 1
+[01:35:15.349] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Processing packet received on port 1
+[01:35:15.349] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Parser 'parser': start
+[01:35:15.349] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.349] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.349] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.349] [bmv2] [T] [thread 12828] [1.0] [cxt 0] Bytes parsed: 14
+[01:35:15.349] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.349] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.349] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.349] [bmv2] [T] [thread 12828] [1.0] [cxt 0] Bytes parsed: 34
+[01:35:15.349] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.349] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.349] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Extracting header 'payload'
+[01:35:15.349] [bmv2] [E] [thread 12828] [1.0] [cxt 0] Exception while parsing: PacketTooShort
+[01:35:15.349] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Parser 'parser': end
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Looking up key:
+
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] hash(base=0, max=4096) = 2912
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Looking up key:
+
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2912 read value 0
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Looking up key:
+
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2912 read value 0
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2912 with value 67372036
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000000000000000000004040404
+
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] Action NoAction
+[01:35:15.350] [bmv2] [T] [thread 12828] [1.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000101
+
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 1
+[01:35:15.350] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000000/16
+Action entry: IDS_Ingress.ipv4_forward - 10200,2,
+
+[01:35:15.351] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - 10200,2,
+[01:35:15.351] [bmv2] [T] [thread 12828] [1.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.351] [bmv2] [T] [thread 12828] [1.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.351] [bmv2] [T] [thread 12828] [1.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.351] [bmv2] [T] [thread 12828] [1.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.351] [bmv2] [T] [thread 12828] [1.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.351] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.351] [bmv2] [D] [thread 12828] [1.0] [cxt 0] Egress port is 2
+[01:35:15.351] [bmv2] [D] [thread 12831] [1.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.351] [bmv2] [D] [thread 12831] [1.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.351] [bmv2] [D] [thread 12831] [1.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.351] [bmv2] [D] [thread 12831] [1.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.351] [bmv2] [D] [thread 12831] [1.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.351] [bmv2] [D] [thread 12831] [1.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.351] [bmv2] [D] [thread 12831] [1.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.351] [bmv2] [D] [thread 12831] [1.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.351] [bmv2] [D] [thread 12833] [1.0] [cxt 0] Transmitting packet of size 54 out of port 2
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Processing packet received on port 2
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Parser 'parser': start
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Bytes parsed: 14
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Bytes parsed: 34
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Extracting header 'payload'
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Parser state 'tcp' has no switch, going to default next state
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Bytes parsed: 58
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Parser 'parser': end
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Looking up key:
+
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] hash(base=0, max=4096) = 503
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Looking up key:
+
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 503 read value 0
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Looking up key:
+
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 503 read value 0
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 503 with value 50529027
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000000000000000000003030303
+
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Action NoAction
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000202
+
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 0
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000202/32
+Action entry: IDS_Ingress.ipv4_forward - a000202,1,
+
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - a000202,1,
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.405] [bmv2] [T] [thread 12828] [2.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.405] [bmv2] [D] [thread 12828] [2.0] [cxt 0] Egress port is 1
+[01:35:15.405] [bmv2] [D] [thread 12830] [2.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.405] [bmv2] [D] [thread 12830] [2.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.405] [bmv2] [D] [thread 12830] [2.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.405] [bmv2] [D] [thread 12830] [2.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.406] [bmv2] [D] [thread 12830] [2.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.406] [bmv2] [D] [thread 12830] [2.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.406] [bmv2] [D] [thread 12830] [2.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.406] [bmv2] [D] [thread 12830] [2.0] [cxt 0] Deparsing header 'payload'
+[01:35:15.406] [bmv2] [D] [thread 12830] [2.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.406] [bmv2] [D] [thread 12833] [2.0] [cxt 0] Transmitting packet of size 58 out of port 1
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Processing packet received on port 1
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Parser 'parser': start
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] Bytes parsed: 14
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] Bytes parsed: 34
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Extracting header 'payload'
+[01:35:15.406] [bmv2] [E] [thread 12828] [3.0] [cxt 0] Exception while parsing: PacketTooShort
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Parser 'parser': end
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Looking up key:
+
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] hash(base=0, max=4096) = 2439
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Looking up key:
+
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2439 read value 0
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Looking up key:
+
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2439 read value 0
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2439 with value 50529027
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000000000000000000003030303
+
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] Action NoAction
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000101
+
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 1
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000000/16
+Action entry: IDS_Ingress.ipv4_forward - 10200,2,
+
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - 10200,2,
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.406] [bmv2] [T] [thread 12828] [3.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.406] [bmv2] [D] [thread 12828] [3.0] [cxt 0] Egress port is 2
+[01:35:15.406] [bmv2] [D] [thread 12831] [3.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.407] [bmv2] [D] [thread 12831] [3.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.407] [bmv2] [D] [thread 12831] [3.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.407] [bmv2] [D] [thread 12831] [3.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.407] [bmv2] [D] [thread 12831] [3.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.407] [bmv2] [D] [thread 12831] [3.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.407] [bmv2] [D] [thread 12831] [3.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.407] [bmv2] [D] [thread 12831] [3.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.407] [bmv2] [D] [thread 12833] [3.0] [cxt 0] Transmitting packet of size 54 out of port 2
+[01:35:15.470] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Processing packet received on port 2
+[01:35:15.470] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Parser 'parser': start
+[01:35:15.470] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.470] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.470] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.470] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Bytes parsed: 14
+[01:35:15.470] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.470] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.470] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.470] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Bytes parsed: 34
+[01:35:15.470] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.470] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.470] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Extracting header 'payload'
+[01:35:15.470] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Parser state 'tcp' has no switch, going to default next state
+[01:35:15.470] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Bytes parsed: 58
+[01:35:15.470] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Parser 'parser': end
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Looking up key:
+
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] hash(base=0, max=4096) = 2422
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Looking up key:
+
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2422 read value 0
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Looking up key:
+
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2422 read value 0
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2422 with value 50529027
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000000000000000000003030303
+
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Action NoAction
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000202
+
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 0
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000202/32
+Action entry: IDS_Ingress.ipv4_forward - a000202,1,
+
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - a000202,1,
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.471] [bmv2] [T] [thread 12828] [4.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.471] [bmv2] [D] [thread 12828] [4.0] [cxt 0] Egress port is 1
+[01:35:15.471] [bmv2] [D] [thread 12830] [4.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.471] [bmv2] [D] [thread 12830] [4.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.471] [bmv2] [D] [thread 12830] [4.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.471] [bmv2] [D] [thread 12830] [4.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.471] [bmv2] [D] [thread 12830] [4.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.471] [bmv2] [D] [thread 12830] [4.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.471] [bmv2] [D] [thread 12830] [4.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.471] [bmv2] [D] [thread 12830] [4.0] [cxt 0] Deparsing header 'payload'
+[01:35:15.471] [bmv2] [D] [thread 12830] [4.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.471] [bmv2] [D] [thread 12833] [4.0] [cxt 0] Transmitting packet of size 58 out of port 1
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Processing packet received on port 1
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Parser 'parser': start
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] Bytes parsed: 14
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] Bytes parsed: 34
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Extracting header 'payload'
+[01:35:15.473] [bmv2] [E] [thread 12828] [5.0] [cxt 0] Exception while parsing: PacketTooShort
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Parser 'parser': end
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Looking up key:
+
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] hash(base=0, max=4096) = 2212
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Looking up key:
+
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2212 read value 0
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Looking up key:
+
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2212 read value 0
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2212 with value 50529027
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000000000000000000003030303
+
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] Action NoAction
+[01:35:15.473] [bmv2] [T] [thread 12828] [5.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000101
+
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 1
+[01:35:15.473] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000000/16
+Action entry: IDS_Ingress.ipv4_forward - 10200,2,
+
+[01:35:15.474] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - 10200,2,
+[01:35:15.474] [bmv2] [T] [thread 12828] [5.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.474] [bmv2] [T] [thread 12828] [5.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.474] [bmv2] [T] [thread 12828] [5.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.474] [bmv2] [T] [thread 12828] [5.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.474] [bmv2] [T] [thread 12828] [5.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.474] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.474] [bmv2] [D] [thread 12828] [5.0] [cxt 0] Egress port is 2
+[01:35:15.474] [bmv2] [D] [thread 12831] [5.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.474] [bmv2] [D] [thread 12831] [5.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.474] [bmv2] [D] [thread 12831] [5.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.474] [bmv2] [D] [thread 12831] [5.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.474] [bmv2] [D] [thread 12831] [5.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.474] [bmv2] [D] [thread 12831] [5.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.474] [bmv2] [D] [thread 12831] [5.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.474] [bmv2] [D] [thread 12831] [5.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.474] [bmv2] [D] [thread 12833] [5.0] [cxt 0] Transmitting packet of size 54 out of port 2
+[01:35:15.507] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Processing packet received on port 2
+[01:35:15.507] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Parser 'parser': start
+[01:35:15.507] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.507] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.507] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.507] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Bytes parsed: 14
+[01:35:15.507] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.507] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.507] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.507] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Bytes parsed: 34
+[01:35:15.507] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.507] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.507] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Extracting header 'payload'
+[01:35:15.507] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Parser state 'tcp' has no switch, going to default next state
+[01:35:15.507] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Bytes parsed: 58
+[01:35:15.507] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Parser 'parser': end
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Looking up key:
+
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] hash(base=0, max=4096) = 1216
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Looking up key:
+
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 1216 read value 0
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Looking up key:
+
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 1216 read value 67372036
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 1216 with value 289360691359450225
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000000000000404040404710471
+
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Action NoAction
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000202
+
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 0
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000202/32
+Action entry: IDS_Ingress.ipv4_forward - a000202,1,
+
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - a000202,1,
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.508] [bmv2] [T] [thread 12828] [6.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.508] [bmv2] [D] [thread 12828] [6.0] [cxt 0] Egress port is 1
+[01:35:15.508] [bmv2] [D] [thread 12830] [6.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.508] [bmv2] [D] [thread 12830] [6.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.508] [bmv2] [D] [thread 12830] [6.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.508] [bmv2] [D] [thread 12830] [6.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.508] [bmv2] [D] [thread 12830] [6.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.508] [bmv2] [D] [thread 12830] [6.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.508] [bmv2] [D] [thread 12830] [6.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.508] [bmv2] [D] [thread 12830] [6.0] [cxt 0] Deparsing header 'payload'
+[01:35:15.508] [bmv2] [D] [thread 12830] [6.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.508] [bmv2] [D] [thread 12833] [6.0] [cxt 0] Transmitting packet of size 58 out of port 1
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Processing packet received on port 1
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Parser 'parser': start
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] Bytes parsed: 14
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] Bytes parsed: 34
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Extracting header 'payload'
+[01:35:15.509] [bmv2] [E] [thread 12828] [7.0] [cxt 0] Exception while parsing: PacketTooShort
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Parser 'parser': end
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Looking up key:
+
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] hash(base=0, max=4096) = 2912
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Looking up key:
+
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2912 read value 0
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Looking up key:
+
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2912 read value 67372036
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2912 with value 289360691359450225
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000000000000404040404710471
+
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] Action NoAction
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000101
+
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 1
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000000/16
+Action entry: IDS_Ingress.ipv4_forward - 10200,2,
+
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - 10200,2,
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.509] [bmv2] [T] [thread 12828] [7.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.509] [bmv2] [D] [thread 12828] [7.0] [cxt 0] Egress port is 2
+[01:35:15.510] [bmv2] [D] [thread 12831] [7.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.510] [bmv2] [D] [thread 12831] [7.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.510] [bmv2] [D] [thread 12831] [7.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.510] [bmv2] [D] [thread 12831] [7.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.510] [bmv2] [D] [thread 12831] [7.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.510] [bmv2] [D] [thread 12831] [7.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.510] [bmv2] [D] [thread 12831] [7.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.510] [bmv2] [D] [thread 12831] [7.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.510] [bmv2] [D] [thread 12833] [7.0] [cxt 0] Transmitting packet of size 54 out of port 2
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Processing packet received on port 2
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Parser 'parser': start
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Bytes parsed: 14
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Bytes parsed: 34
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Extracting header 'payload'
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Parser state 'tcp' has no switch, going to default next state
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Bytes parsed: 58
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Parser 'parser': end
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Looking up key:
+
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] hash(base=0, max=4096) = 503
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Looking up key:
+
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 503 read value 0
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Looking up key:
+
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.552] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 503 read value 50529027
+[01:35:15.552] [bmv2] [T] [thread 12828] [8.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.553] [bmv2] [T] [thread 12828] [8.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.553] [bmv2] [T] [thread 12828] [8.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.553] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 503 with value 217020518521439089
+[01:35:15.553] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.553] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000000000000303030303710371
+
+[01:35:15.553] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.553] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.553] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Action NoAction
+[01:35:15.553] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.553] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000202
+
+[01:35:15.553] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 0
+[01:35:15.553] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000202/32
+Action entry: IDS_Ingress.ipv4_forward - a000202,1,
+
+[01:35:15.553] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - a000202,1,
+[01:35:15.553] [bmv2] [T] [thread 12828] [8.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.553] [bmv2] [T] [thread 12828] [8.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.553] [bmv2] [T] [thread 12828] [8.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.553] [bmv2] [T] [thread 12828] [8.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.553] [bmv2] [T] [thread 12828] [8.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.553] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.553] [bmv2] [D] [thread 12828] [8.0] [cxt 0] Egress port is 1
+[01:35:15.553] [bmv2] [D] [thread 12830] [8.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.553] [bmv2] [D] [thread 12830] [8.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.553] [bmv2] [D] [thread 12830] [8.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.553] [bmv2] [D] [thread 12830] [8.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.553] [bmv2] [D] [thread 12830] [8.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.553] [bmv2] [D] [thread 12830] [8.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.553] [bmv2] [D] [thread 12830] [8.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.553] [bmv2] [D] [thread 12830] [8.0] [cxt 0] Deparsing header 'payload'
+[01:35:15.553] [bmv2] [D] [thread 12830] [8.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.553] [bmv2] [D] [thread 12833] [8.0] [cxt 0] Transmitting packet of size 58 out of port 1
+[01:35:15.553] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Processing packet received on port 1
+[01:35:15.553] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Parser 'parser': start
+[01:35:15.553] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.553] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.553] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.553] [bmv2] [T] [thread 12828] [9.0] [cxt 0] Bytes parsed: 14
+[01:35:15.553] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.553] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.553] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.553] [bmv2] [T] [thread 12828] [9.0] [cxt 0] Bytes parsed: 34
+[01:35:15.553] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.553] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.553] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Extracting header 'payload'
+[01:35:15.553] [bmv2] [E] [thread 12828] [9.0] [cxt 0] Exception while parsing: PacketTooShort
+[01:35:15.553] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Parser 'parser': end
+[01:35:15.553] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.553] [bmv2] [T] [thread 12828] [9.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.553] [bmv2] [T] [thread 12828] [9.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Looking up key:
+
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] hash(base=0, max=4096) = 2439
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Looking up key:
+
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2439 read value 0
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Looking up key:
+
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2439 read value 50529027
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2439 with value 217020518521439089
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000000000000303030303710371
+
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] Action NoAction
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000101
+
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 1
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000000/16
+Action entry: IDS_Ingress.ipv4_forward - 10200,2,
+
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - 10200,2,
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.554] [bmv2] [T] [thread 12828] [9.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.554] [bmv2] [D] [thread 12828] [9.0] [cxt 0] Egress port is 2
+[01:35:15.554] [bmv2] [D] [thread 12831] [9.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.554] [bmv2] [D] [thread 12831] [9.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.554] [bmv2] [D] [thread 12831] [9.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.554] [bmv2] [D] [thread 12831] [9.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.554] [bmv2] [D] [thread 12831] [9.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.554] [bmv2] [D] [thread 12831] [9.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.554] [bmv2] [D] [thread 12831] [9.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.554] [bmv2] [D] [thread 12831] [9.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.554] [bmv2] [D] [thread 12833] [9.0] [cxt 0] Transmitting packet of size 54 out of port 2
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Processing packet received on port 2
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Parser 'parser': start
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.607] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Bytes parsed: 14
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.607] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Bytes parsed: 34
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Extracting header 'payload'
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Parser state 'tcp' has no switch, going to default next state
+[01:35:15.607] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Bytes parsed: 58
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Parser 'parser': end
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.607] [bmv2] [T] [thread 12828] [10.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.607] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Looking up key:
+
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.607] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.607] [bmv2] [T] [thread 12828] [10.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.607] [bmv2] [T] [thread 12828] [10.0] [cxt 0] hash(base=0, max=4096) = 2422
+[01:35:15.607] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Looking up key:
+
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.607] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.607] [bmv2] [T] [thread 12828] [10.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.607] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2422 read value 0
+[01:35:15.607] [bmv2] [T] [thread 12828] [10.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.607] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Looking up key:
+
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.607] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.608] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.608] [bmv2] [T] [thread 12828] [10.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.608] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2422 read value 50529027
+[01:35:15.608] [bmv2] [T] [thread 12828] [10.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.608] [bmv2] [T] [thread 12828] [10.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.608] [bmv2] [T] [thread 12828] [10.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.608] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2422 with value 217020518521439089
+[01:35:15.608] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.608] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000000000000303030303710371
+
+[01:35:15.608] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.608] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.608] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Action NoAction
+[01:35:15.608] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.608] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000202
+
+[01:35:15.608] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 0
+[01:35:15.608] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000202/32
+Action entry: IDS_Ingress.ipv4_forward - a000202,1,
+
+[01:35:15.608] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - a000202,1,
+[01:35:15.608] [bmv2] [T] [thread 12828] [10.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.608] [bmv2] [T] [thread 12828] [10.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.608] [bmv2] [T] [thread 12828] [10.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.608] [bmv2] [T] [thread 12828] [10.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.608] [bmv2] [T] [thread 12828] [10.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.608] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.608] [bmv2] [D] [thread 12828] [10.0] [cxt 0] Egress port is 1
+[01:35:15.608] [bmv2] [D] [thread 12830] [10.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.608] [bmv2] [D] [thread 12830] [10.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.608] [bmv2] [D] [thread 12830] [10.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.608] [bmv2] [D] [thread 12830] [10.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.608] [bmv2] [D] [thread 12830] [10.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.608] [bmv2] [D] [thread 12830] [10.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.608] [bmv2] [D] [thread 12830] [10.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.608] [bmv2] [D] [thread 12830] [10.0] [cxt 0] Deparsing header 'payload'
+[01:35:15.608] [bmv2] [D] [thread 12830] [10.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.608] [bmv2] [D] [thread 12833] [10.0] [cxt 0] Transmitting packet of size 58 out of port 1
+[01:35:15.608] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Processing packet received on port 1
+[01:35:15.608] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Parser 'parser': start
+[01:35:15.608] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.608] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.608] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.608] [bmv2] [T] [thread 12828] [11.0] [cxt 0] Bytes parsed: 14
+[01:35:15.608] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.608] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.608] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.608] [bmv2] [T] [thread 12828] [11.0] [cxt 0] Bytes parsed: 34
+[01:35:15.608] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.608] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.608] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Extracting header 'payload'
+[01:35:15.609] [bmv2] [E] [thread 12828] [11.0] [cxt 0] Exception while parsing: PacketTooShort
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Parser 'parser': end
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Looking up key:
+
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] hash(base=0, max=4096) = 2212
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Looking up key:
+
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2212 read value 0
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Looking up key:
+
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2212 read value 50529027
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2212 with value 217020518521439089
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000000000000303030303710371
+
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] Action NoAction
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000101
+
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 1
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000000/16
+Action entry: IDS_Ingress.ipv4_forward - 10200,2,
+
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - 10200,2,
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.609] [bmv2] [T] [thread 12828] [11.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.609] [bmv2] [D] [thread 12828] [11.0] [cxt 0] Egress port is 2
+[01:35:15.609] [bmv2] [D] [thread 12831] [11.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.609] [bmv2] [D] [thread 12831] [11.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.609] [bmv2] [D] [thread 12831] [11.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.609] [bmv2] [D] [thread 12831] [11.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.609] [bmv2] [D] [thread 12831] [11.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.609] [bmv2] [D] [thread 12831] [11.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.609] [bmv2] [D] [thread 12831] [11.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.609] [bmv2] [D] [thread 12831] [11.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.609] [bmv2] [D] [thread 12833] [11.0] [cxt 0] Transmitting packet of size 54 out of port 2
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Processing packet received on port 2
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Parser 'parser': start
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.674] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Bytes parsed: 14
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.674] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Bytes parsed: 34
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Extracting header 'payload'
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Parser state 'tcp' has no switch, going to default next state
+[01:35:15.674] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Bytes parsed: 58
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Parser 'parser': end
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.674] [bmv2] [T] [thread 12828] [12.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.674] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Looking up key:
+
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.674] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.674] [bmv2] [T] [thread 12828] [12.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.674] [bmv2] [T] [thread 12828] [12.0] [cxt 0] hash(base=0, max=4096) = 1216
+[01:35:15.674] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Looking up key:
+
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.674] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.674] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.674] [bmv2] [T] [thread 12828] [12.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.674] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 1216 read value 0
+[01:35:15.674] [bmv2] [T] [thread 12828] [12.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.674] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.675] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Looking up key:
+
+[01:35:15.675] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.675] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.675] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.675] [bmv2] [T] [thread 12828] [12.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.675] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 1216 read value 289360691359450225
+[01:35:15.675] [bmv2] [T] [thread 12828] [12.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.675] [bmv2] [T] [thread 12828] [12.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.675] [bmv2] [T] [thread 12828] [12.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.675] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 1216 with value 1242794706136788496989357170
+[01:35:15.675] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.675] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000040404040471047104710472
+
+[01:35:15.675] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.675] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.675] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Action NoAction
+[01:35:15.675] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.675] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000202
+
+[01:35:15.675] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 0
+[01:35:15.675] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000202/32
+Action entry: IDS_Ingress.ipv4_forward - a000202,1,
+
+[01:35:15.675] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - a000202,1,
+[01:35:15.675] [bmv2] [T] [thread 12828] [12.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.675] [bmv2] [T] [thread 12828] [12.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.675] [bmv2] [T] [thread 12828] [12.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.675] [bmv2] [T] [thread 12828] [12.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.675] [bmv2] [T] [thread 12828] [12.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.675] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.675] [bmv2] [D] [thread 12828] [12.0] [cxt 0] Egress port is 1
+[01:35:15.675] [bmv2] [D] [thread 12830] [12.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.675] [bmv2] [D] [thread 12830] [12.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.675] [bmv2] [D] [thread 12830] [12.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.675] [bmv2] [D] [thread 12830] [12.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.675] [bmv2] [D] [thread 12830] [12.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.676] [bmv2] [D] [thread 12830] [12.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.676] [bmv2] [D] [thread 12830] [12.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.676] [bmv2] [D] [thread 12830] [12.0] [cxt 0] Deparsing header 'payload'
+[01:35:15.676] [bmv2] [D] [thread 12830] [12.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.676] [bmv2] [D] [thread 12833] [12.0] [cxt 0] Transmitting packet of size 58 out of port 1
+[01:35:15.676] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Processing packet received on port 1
+[01:35:15.676] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Parser 'parser': start
+[01:35:15.676] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.676] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.676] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.676] [bmv2] [T] [thread 12828] [13.0] [cxt 0] Bytes parsed: 14
+[01:35:15.676] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.676] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.676] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.676] [bmv2] [T] [thread 12828] [13.0] [cxt 0] Bytes parsed: 34
+[01:35:15.676] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.676] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.676] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Extracting header 'payload'
+[01:35:15.676] [bmv2] [E] [thread 12828] [13.0] [cxt 0] Exception while parsing: PacketTooShort
+[01:35:15.676] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Parser 'parser': end
+[01:35:15.676] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.676] [bmv2] [T] [thread 12828] [13.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.676] [bmv2] [T] [thread 12828] [13.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Looking up key:
+
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] hash(base=0, max=4096) = 2912
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Looking up key:
+
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2912 read value 0
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Looking up key:
+
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2912 read value 289360691359450225
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2912 with value 1242794706136788496989357170
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000040404040471047104710472
+
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] Action NoAction
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000101
+
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 1
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000000/16
+Action entry: IDS_Ingress.ipv4_forward - 10200,2,
+
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - 10200,2,
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.677] [bmv2] [T] [thread 12828] [13.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.677] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.678] [bmv2] [D] [thread 12828] [13.0] [cxt 0] Egress port is 2
+[01:35:15.678] [bmv2] [D] [thread 12831] [13.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.678] [bmv2] [D] [thread 12831] [13.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.678] [bmv2] [D] [thread 12831] [13.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.678] [bmv2] [D] [thread 12831] [13.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.678] [bmv2] [D] [thread 12831] [13.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.678] [bmv2] [D] [thread 12831] [13.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.678] [bmv2] [D] [thread 12831] [13.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.678] [bmv2] [D] [thread 12831] [13.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.678] [bmv2] [D] [thread 12833] [13.0] [cxt 0] Transmitting packet of size 54 out of port 2
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Processing packet received on port 2
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Parser 'parser': start
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.711] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Bytes parsed: 14
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.711] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Bytes parsed: 34
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Extracting header 'payload'
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Parser state 'tcp' has no switch, going to default next state
+[01:35:15.711] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Bytes parsed: 58
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Parser 'parser': end
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.711] [bmv2] [T] [thread 12828] [14.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.711] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Looking up key:
+
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.711] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.711] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.711] [bmv2] [T] [thread 12828] [14.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] hash(base=0, max=4096) = 503
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.712] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Looking up key:
+
+[01:35:15.712] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.712] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 503 read value 0
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.712] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Looking up key:
+
+[01:35:15.712] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.712] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 503 read value 217020518521439089
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 503 with value 932096029610543162168771442
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.712] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000030303030371037103710372
+
+[01:35:15.712] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.712] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Action NoAction
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.712] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000202
+
+[01:35:15.712] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 0
+[01:35:15.712] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000202/32
+Action entry: IDS_Ingress.ipv4_forward - a000202,1,
+
+[01:35:15.712] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - a000202,1,
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.712] [bmv2] [T] [thread 12828] [14.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.712] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.712] [bmv2] [D] [thread 12828] [14.0] [cxt 0] Egress port is 1
+[01:35:15.712] [bmv2] [D] [thread 12830] [14.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.712] [bmv2] [D] [thread 12830] [14.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.712] [bmv2] [D] [thread 12830] [14.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.712] [bmv2] [D] [thread 12830] [14.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.712] [bmv2] [D] [thread 12830] [14.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.712] [bmv2] [D] [thread 12830] [14.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.712] [bmv2] [D] [thread 12830] [14.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.712] [bmv2] [D] [thread 12830] [14.0] [cxt 0] Deparsing header 'payload'
+[01:35:15.712] [bmv2] [D] [thread 12830] [14.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.712] [bmv2] [D] [thread 12833] [14.0] [cxt 0] Transmitting packet of size 58 out of port 1
+[01:35:15.712] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Processing packet received on port 1
+[01:35:15.712] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Parser 'parser': start
+[01:35:15.712] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.712] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.712] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.712] [bmv2] [T] [thread 12828] [15.0] [cxt 0] Bytes parsed: 14
+[01:35:15.712] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.712] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.712] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.712] [bmv2] [T] [thread 12828] [15.0] [cxt 0] Bytes parsed: 34
+[01:35:15.712] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Extracting header 'payload'
+[01:35:15.713] [bmv2] [E] [thread 12828] [15.0] [cxt 0] Exception while parsing: PacketTooShort
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Parser 'parser': end
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Looking up key:
+
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] hash(base=0, max=4096) = 2439
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Looking up key:
+
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2439 read value 0
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Looking up key:
+
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2439 read value 217020518521439089
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2439 with value 932096029610543162168771442
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000030303030371037103710372
+
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] Action NoAction
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000101
+
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 1
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000000/16
+Action entry: IDS_Ingress.ipv4_forward - 10200,2,
+
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - 10200,2,
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.713] [bmv2] [T] [thread 12828] [15.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.713] [bmv2] [D] [thread 12828] [15.0] [cxt 0] Egress port is 2
+[01:35:15.713] [bmv2] [D] [thread 12831] [15.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.713] [bmv2] [D] [thread 12831] [15.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.713] [bmv2] [D] [thread 12831] [15.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.713] [bmv2] [D] [thread 12831] [15.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.713] [bmv2] [D] [thread 12831] [15.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.713] [bmv2] [D] [thread 12831] [15.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.713] [bmv2] [D] [thread 12831] [15.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.713] [bmv2] [D] [thread 12831] [15.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.713] [bmv2] [D] [thread 12833] [15.0] [cxt 0] Transmitting packet of size 54 out of port 2
+[01:35:15.755] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Processing packet received on port 2
+[01:35:15.755] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Parser 'parser': start
+[01:35:15.755] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.755] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.755] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.755] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Bytes parsed: 14
+[01:35:15.755] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.755] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.755] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.755] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Bytes parsed: 34
+[01:35:15.756] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.756] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.756] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Extracting header 'payload'
+[01:35:15.756] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Parser state 'tcp' has no switch, going to default next state
+[01:35:15.756] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Bytes parsed: 58
+[01:35:15.756] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Parser 'parser': end
+[01:35:15.756] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.756] [bmv2] [T] [thread 12828] [16.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.756] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.756] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Looking up key:
+
+[01:35:15.756] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.756] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.756] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.756] [bmv2] [T] [thread 12828] [16.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.756] [bmv2] [T] [thread 12828] [16.0] [cxt 0] hash(base=0, max=4096) = 1216
+[01:35:15.756] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.756] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Looking up key:
+
+[01:35:15.756] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.756] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.756] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.756] [bmv2] [T] [thread 12828] [16.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.756] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 1216 read value 0
+[01:35:15.756] [bmv2] [T] [thread 12828] [16.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.756] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.756] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Looking up key:
+
+[01:35:15.756] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.756] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.756] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.757] [bmv2] [T] [thread 12828] [16.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.757] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 1216 read value 1242794706136788496989357170
+[01:35:15.757] [bmv2] [T] [thread 12828] [16.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.757] [bmv2] [T] [thread 12828] [16.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.757] [bmv2] [T] [thread 12828] [16.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.757] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 1216 with value 5337762618499437097038283505280484356
+[01:35:15.757] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.757] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000004040404047104710471047204040404
+
+[01:35:15.757] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.757] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.757] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Action NoAction
+[01:35:15.757] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.757] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000202
+
+[01:35:15.757] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 0
+[01:35:15.757] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000202/32
+Action entry: IDS_Ingress.ipv4_forward - a000202,1,
+
+[01:35:15.757] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - a000202,1,
+[01:35:15.757] [bmv2] [T] [thread 12828] [16.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.757] [bmv2] [T] [thread 12828] [16.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.757] [bmv2] [T] [thread 12828] [16.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.757] [bmv2] [T] [thread 12828] [16.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.757] [bmv2] [T] [thread 12828] [16.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.757] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.757] [bmv2] [D] [thread 12828] [16.0] [cxt 0] Egress port is 1
+[01:35:15.757] [bmv2] [D] [thread 12830] [16.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.757] [bmv2] [D] [thread 12830] [16.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.757] [bmv2] [D] [thread 12830] [16.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.757] [bmv2] [D] [thread 12830] [16.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.757] [bmv2] [D] [thread 12830] [16.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.757] [bmv2] [D] [thread 12830] [16.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.757] [bmv2] [D] [thread 12830] [16.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.757] [bmv2] [D] [thread 12830] [16.0] [cxt 0] Deparsing header 'payload'
+[01:35:15.757] [bmv2] [D] [thread 12830] [16.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.758] [bmv2] [D] [thread 12833] [16.0] [cxt 0] Transmitting packet of size 58 out of port 1
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Processing packet received on port 1
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Parser 'parser': start
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.758] [bmv2] [T] [thread 12828] [17.0] [cxt 0] Bytes parsed: 14
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.758] [bmv2] [T] [thread 12828] [17.0] [cxt 0] Bytes parsed: 34
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Extracting header 'payload'
+[01:35:15.758] [bmv2] [E] [thread 12828] [17.0] [cxt 0] Exception while parsing: PacketTooShort
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Parser 'parser': end
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.758] [bmv2] [T] [thread 12828] [17.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.758] [bmv2] [T] [thread 12828] [17.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Looking up key:
+
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.758] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] hash(base=0, max=4096) = 2912
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.759] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Looking up key:
+
+[01:35:15.759] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.759] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2912 read value 0
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.759] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Looking up key:
+
+[01:35:15.759] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.759] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2912 read value 1242794706136788496989357170
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2912 with value 5337762618499437097038283505280484356
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.759] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000004040404047104710471047204040404
+
+[01:35:15.759] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.759] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] Action NoAction
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.759] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000101
+
+[01:35:15.759] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 1
+[01:35:15.759] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000000/16
+Action entry: IDS_Ingress.ipv4_forward - 10200,2,
+
+[01:35:15.759] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - 10200,2,
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.759] [bmv2] [T] [thread 12828] [17.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.760] [bmv2] [T] [thread 12828] [17.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.760] [bmv2] [T] [thread 12828] [17.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.760] [bmv2] [T] [thread 12828] [17.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.760] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.760] [bmv2] [D] [thread 12828] [17.0] [cxt 0] Egress port is 2
+[01:35:15.760] [bmv2] [D] [thread 12831] [17.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.760] [bmv2] [D] [thread 12831] [17.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.760] [bmv2] [D] [thread 12831] [17.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.760] [bmv2] [D] [thread 12831] [17.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.760] [bmv2] [D] [thread 12831] [17.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.760] [bmv2] [D] [thread 12831] [17.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.760] [bmv2] [D] [thread 12831] [17.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.760] [bmv2] [D] [thread 12831] [17.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.760] [bmv2] [D] [thread 12833] [17.0] [cxt 0] Transmitting packet of size 54 out of port 2
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Processing packet received on port 2
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Parser 'parser': start
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Bytes parsed: 14
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Bytes parsed: 34
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Extracting header 'payload'
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Parser state 'tcp' has no switch, going to default next state
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Bytes parsed: 58
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Parser 'parser': end
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Looking up key:
+
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] hash(base=0, max=4096) = 503
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Looking up key:
+
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 503 read value 0
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Looking up key:
+
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 503 read value 932096029610543162168771442
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 503 with value 4003321963908730498311297775939289859
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000003030303037103710371037203030303
+
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Action NoAction
+[01:35:15.795] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000202
+
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 0
+[01:35:15.795] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000202/32
+Action entry: IDS_Ingress.ipv4_forward - a000202,1,
+
+[01:35:15.796] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - a000202,1,
+[01:35:15.796] [bmv2] [T] [thread 12828] [18.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.796] [bmv2] [T] [thread 12828] [18.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.796] [bmv2] [T] [thread 12828] [18.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.796] [bmv2] [T] [thread 12828] [18.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.796] [bmv2] [T] [thread 12828] [18.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.796] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.796] [bmv2] [D] [thread 12828] [18.0] [cxt 0] Egress port is 1
+[01:35:15.796] [bmv2] [D] [thread 12830] [18.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.796] [bmv2] [D] [thread 12830] [18.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.796] [bmv2] [D] [thread 12830] [18.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.796] [bmv2] [D] [thread 12830] [18.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.796] [bmv2] [D] [thread 12830] [18.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.796] [bmv2] [D] [thread 12830] [18.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.796] [bmv2] [D] [thread 12830] [18.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.796] [bmv2] [D] [thread 12830] [18.0] [cxt 0] Deparsing header 'payload'
+[01:35:15.796] [bmv2] [D] [thread 12830] [18.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.796] [bmv2] [D] [thread 12833] [18.0] [cxt 0] Transmitting packet of size 58 out of port 1
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Processing packet received on port 1
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Parser 'parser': start
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] Bytes parsed: 14
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] Bytes parsed: 34
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Extracting header 'payload'
+[01:35:15.796] [bmv2] [E] [thread 12828] [19.0] [cxt 0] Exception while parsing: PacketTooShort
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Parser 'parser': end
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Looking up key:
+
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] hash(base=0, max=4096) = 2439
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Looking up key:
+
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2439 read value 0
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Looking up key:
+
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.796] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2439 read value 932096029610543162168771442
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.796] [bmv2] [T] [thread 12828] [19.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.797] [bmv2] [T] [thread 12828] [19.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2439 with value 4003321963908730498311297775939289859
+[01:35:15.797] [bmv2] [T] [thread 12828] [19.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.797] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000003030303037103710371037203030303
+
+[01:35:15.797] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.797] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.797] [bmv2] [T] [thread 12828] [19.0] [cxt 0] Action NoAction
+[01:35:15.797] [bmv2] [T] [thread 12828] [19.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.797] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000101
+
+[01:35:15.797] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 1
+[01:35:15.797] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000000/16
+Action entry: IDS_Ingress.ipv4_forward - 10200,2,
+
+[01:35:15.797] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - 10200,2,
+[01:35:15.797] [bmv2] [T] [thread 12828] [19.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.797] [bmv2] [T] [thread 12828] [19.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.797] [bmv2] [T] [thread 12828] [19.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.797] [bmv2] [T] [thread 12828] [19.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.797] [bmv2] [T] [thread 12828] [19.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.797] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.797] [bmv2] [D] [thread 12828] [19.0] [cxt 0] Egress port is 2
+[01:35:15.797] [bmv2] [D] [thread 12831] [19.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.797] [bmv2] [D] [thread 12831] [19.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.797] [bmv2] [D] [thread 12831] [19.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.797] [bmv2] [D] [thread 12831] [19.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.797] [bmv2] [D] [thread 12831] [19.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.797] [bmv2] [D] [thread 12831] [19.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.797] [bmv2] [D] [thread 12831] [19.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.797] [bmv2] [D] [thread 12831] [19.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.797] [bmv2] [D] [thread 12833] [19.0] [cxt 0] Transmitting packet of size 54 out of port 2
+[01:35:15.847] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Processing packet received on port 2
+[01:35:15.847] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Parser 'parser': start
+[01:35:15.847] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.847] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.847] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.847] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Bytes parsed: 14
+[01:35:15.847] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Bytes parsed: 34
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Extracting header 'payload'
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Parser state 'tcp' has no switch, going to default next state
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Bytes parsed: 58
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Parser 'parser': end
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Looking up key:
+
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] hash(base=0, max=4096) = 2422
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Looking up key:
+
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2422 read value 0
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Looking up key:
+
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2422 read value 217020518521439089
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2422 with value 932096029610543162168771442
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000030303030371037103710372
+
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Action NoAction
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000202
+
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 0
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000202/32
+Action entry: IDS_Ingress.ipv4_forward - a000202,1,
+
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - a000202,1,
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.848] [bmv2] [T] [thread 12828] [20.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.848] [bmv2] [D] [thread 12828] [20.0] [cxt 0] Egress port is 1
+[01:35:15.848] [bmv2] [D] [thread 12830] [20.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.848] [bmv2] [D] [thread 12830] [20.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.848] [bmv2] [D] [thread 12830] [20.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.848] [bmv2] [D] [thread 12830] [20.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.848] [bmv2] [D] [thread 12830] [20.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.848] [bmv2] [D] [thread 12830] [20.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.848] [bmv2] [D] [thread 12830] [20.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.849] [bmv2] [D] [thread 12830] [20.0] [cxt 0] Deparsing header 'payload'
+[01:35:15.849] [bmv2] [D] [thread 12830] [20.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.849] [bmv2] [D] [thread 12833] [20.0] [cxt 0] Transmitting packet of size 58 out of port 1
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Processing packet received on port 1
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Parser 'parser': start
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.849] [bmv2] [T] [thread 12828] [21.0] [cxt 0] Bytes parsed: 14
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.849] [bmv2] [T] [thread 12828] [21.0] [cxt 0] Bytes parsed: 34
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Extracting header 'payload'
+[01:35:15.849] [bmv2] [E] [thread 12828] [21.0] [cxt 0] Exception while parsing: PacketTooShort
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Parser 'parser': end
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.849] [bmv2] [T] [thread 12828] [21.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.849] [bmv2] [T] [thread 12828] [21.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Looking up key:
+
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.849] [bmv2] [T] [thread 12828] [21.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.849] [bmv2] [T] [thread 12828] [21.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.849] [bmv2] [T] [thread 12828] [21.0] [cxt 0] hash(base=0, max=4096) = 2212
+[01:35:15.849] [bmv2] [T] [thread 12828] [21.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Looking up key:
+
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.849] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.849] [bmv2] [T] [thread 12828] [21.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.849] [bmv2] [T] [thread 12828] [21.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.849] [bmv2] [T] [thread 12828] [21.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2212 read value 0
+[01:35:15.849] [bmv2] [T] [thread 12828] [21.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.850] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Looking up key:
+
+[01:35:15.850] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.850] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2212 read value 217020518521439089
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2212 with value 932096029610543162168771442
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.850] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000000000000030303030371037103710372
+
+[01:35:15.850] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.850] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] Action NoAction
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.850] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000101
+
+[01:35:15.850] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 1
+[01:35:15.850] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000000/16
+Action entry: IDS_Ingress.ipv4_forward - 10200,2,
+
+[01:35:15.850] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - 10200,2,
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.850] [bmv2] [T] [thread 12828] [21.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.850] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.850] [bmv2] [D] [thread 12828] [21.0] [cxt 0] Egress port is 2
+[01:35:15.850] [bmv2] [D] [thread 12831] [21.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.850] [bmv2] [D] [thread 12831] [21.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.850] [bmv2] [D] [thread 12831] [21.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.850] [bmv2] [D] [thread 12831] [21.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.850] [bmv2] [D] [thread 12831] [21.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.850] [bmv2] [D] [thread 12831] [21.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.850] [bmv2] [D] [thread 12831] [21.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.850] [bmv2] [D] [thread 12831] [21.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.850] [bmv2] [D] [thread 12833] [21.0] [cxt 0] Transmitting packet of size 54 out of port 2
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Processing packet received on port 2
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Parser 'parser': start
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Bytes parsed: 14
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Bytes parsed: 34
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Extracting header 'payload'
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Parser state 'tcp' has no switch, going to default next state
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Bytes parsed: 58
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Parser 'parser': end
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Looking up key:
+
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] hash(base=0, max=4096) = 2422
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Looking up key:
+
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2422 read value 0
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Looking up key:
+
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.883] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.883] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2422 read value 932096029610543162168771442
+[01:35:15.884] [bmv2] [T] [thread 12828] [22.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.884] [bmv2] [T] [thread 12828] [22.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.884] [bmv2] [T] [thread 12828] [22.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.884] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2422 with value 4003321963908730498311297775939289859
+[01:35:15.884] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.884] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000003030303037103710371037203030303
+
+[01:35:15.884] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.884] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.884] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Action NoAction
+[01:35:15.884] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.884] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000202
+
+[01:35:15.884] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 0
+[01:35:15.884] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000202/32
+Action entry: IDS_Ingress.ipv4_forward - a000202,1,
+
+[01:35:15.884] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - a000202,1,
+[01:35:15.884] [bmv2] [T] [thread 12828] [22.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.884] [bmv2] [T] [thread 12828] [22.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.884] [bmv2] [T] [thread 12828] [22.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.884] [bmv2] [T] [thread 12828] [22.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.884] [bmv2] [T] [thread 12828] [22.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.884] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.884] [bmv2] [D] [thread 12828] [22.0] [cxt 0] Egress port is 1
+[01:35:15.884] [bmv2] [D] [thread 12830] [22.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.884] [bmv2] [D] [thread 12830] [22.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.884] [bmv2] [D] [thread 12830] [22.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.884] [bmv2] [D] [thread 12830] [22.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.884] [bmv2] [D] [thread 12830] [22.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.884] [bmv2] [D] [thread 12830] [22.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.884] [bmv2] [D] [thread 12830] [22.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.884] [bmv2] [D] [thread 12830] [22.0] [cxt 0] Deparsing header 'payload'
+[01:35:15.884] [bmv2] [D] [thread 12830] [22.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.884] [bmv2] [D] [thread 12833] [22.0] [cxt 0] Transmitting packet of size 58 out of port 1
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Processing packet received on port 1
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Parser 'parser': start
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Parser 'parser' entering state 'start'
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Extracting header 'ethernet'
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Parser state 'start': key is 0800
+[01:35:15.884] [bmv2] [T] [thread 12828] [23.0] [cxt 0] Bytes parsed: 14
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Parser 'parser' entering state 'ipv4'
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Extracting header 'ipv4'
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Parser state 'ipv4': key is 06
+[01:35:15.884] [bmv2] [T] [thread 12828] [23.0] [cxt 0] Bytes parsed: 34
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Parser 'parser' entering state 'tcp'
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Extracting header 'tcp'
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Extracting header 'payload'
+[01:35:15.884] [bmv2] [E] [thread 12828] [23.0] [cxt 0] Exception while parsing: PacketTooShort
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Parser 'parser': end
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Pipeline 'ingress': start
+[01:35:15.884] [bmv2] [T] [thread 12828] [23.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(248) Condition "hdr.ipv4.isValid()" (node_2) is true
+[01:35:15.884] [bmv2] [T] [thread 12828] [23.0] [cxt 0] Applying table 'tbl_compute_hashes'
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Looking up key:
+
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Table 'tbl_compute_hashes': miss
+[01:35:15.884] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Action entry is IDS_Ingress.compute_hashes - 
+[01:35:15.884] [bmv2] [T] [thread 12828] [23.0] [cxt 0] Action IDS_Ingress.compute_hashes
+[01:35:15.884] [bmv2] [T] [thread 12828] [23.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(181) Primitive hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ...
+[01:35:15.884] [bmv2] [T] [thread 12828] [23.0] [cxt 0] hash(base=0, max=4096) = 2212
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] Applying table 'IDS_Ingress.flows'
+[01:35:15.885] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Looking up key:
+
+[01:35:15.885] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Table 'IDS_Ingress.flows': miss
+[01:35:15.885] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Action entry is IDS_Ingress.get_flow_status - 
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] Action IDS_Ingress.get_flow_status
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(169) Primitive blocked_flows.read(current_flow, hashed_val)
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] Read register 'IDS_Ingress.blocked_flows' at index 2212 read value 0
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(253) Condition "current_flow == 0" (node_5) is true
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] Applying table 'IDS_Ingress.build_pattern'
+[01:35:15.885] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Looking up key:
+
+[01:35:15.885] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Table 'IDS_Ingress.build_pattern': miss
+[01:35:15.885] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Action entry is IDS_Ingress._build_pattern - 
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] Action IDS_Ingress._build_pattern
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(174) Primitive pattern.read(current_pattern, hashed_val)
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] Read register 'IDS_Ingress.pattern' at index 2212 read value 932096029610543162168771442
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(175) Primitive current_pattern = current_pattern << 32
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(176) Primitive current_pattern = current_pattern | (bit<(32*5)>)hdr.payload.data
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(177) Primitive pattern.write(hashed_val, current_pattern)
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] Wrote register 'IDS_Ingress.pattern' at index 2212 with value 4003321963908730498311297775939289859
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] Applying table 'IDS_Ingress.signatures'
+[01:35:15.885] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Looking up key:
+* current_pattern     : 0000000003030303037103710371037203030303
+
+[01:35:15.885] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Table 'IDS_Ingress.signatures': miss
+[01:35:15.885] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Action entry is NoAction - 
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] Action NoAction
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] Applying table 'IDS_Ingress.ipv4_lpm'
+[01:35:15.885] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Looking up key:
+* hdr.ipv4.dstAddr    : 0a000101
+
+[01:35:15.885] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Table 'IDS_Ingress.ipv4_lpm': hit with handle 1
+[01:35:15.885] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000000/16
+Action entry: IDS_Ingress.ipv4_forward - 10200,2,
+
+[01:35:15.885] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Action entry is IDS_Ingress.ipv4_forward - 10200,2,
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] Action IDS_Ingress.ipv4_forward
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(222) Primitive hdr.ethernet.srcAddr = hdr.ethernet.dstAddr
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(225) Primitive hdr.ethernet.dstAddr = dstAddr
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(228) Primitive standard_metadata.egress_spec = port
+[01:35:15.885] [bmv2] [T] [thread 12828] [23.0] [cxt 0] /home/p4/p4-firewall-ids/simple-IDS/ids_stateful/p4src/program.p4(231) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[01:35:15.885] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Pipeline 'ingress': end
+[01:35:15.885] [bmv2] [D] [thread 12828] [23.0] [cxt 0] Egress port is 2
+[01:35:15.885] [bmv2] [D] [thread 12831] [23.0] [cxt 0] Pipeline 'egress': start
+[01:35:15.885] [bmv2] [D] [thread 12831] [23.0] [cxt 0] Pipeline 'egress': end
+[01:35:15.885] [bmv2] [D] [thread 12831] [23.0] [cxt 0] Deparser 'deparser': start
+[01:35:15.885] [bmv2] [D] [thread 12831] [23.0] [cxt 0] Updating checksum 'cksum'
+[01:35:15.885] [bmv2] [D] [thread 12831] [23.0] [cxt 0] Deparsing header 'ethernet'
+[01:35:15.885] [bmv2] [D] [thread 12831] [23.0] [cxt 0] Deparsing header 'ipv4'
+[01:35:15.885] [bmv2] [D] [thread 12831] [23.0] [cxt 0] Deparsing header 'tcp'
+[01:35:15.885] [bmv2] [D] [thread 12831] [23.0] [cxt 0] Deparser 'deparser': end
+[01:35:15.885] [bmv2] [D] [thread 12833] [23.0] [cxt 0] Transmitting packet of size 54 out of port 2
+open: No such file or directory
