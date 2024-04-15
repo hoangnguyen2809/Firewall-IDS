@@ -73,6 +73,4 @@ if __name__ == '__main__':
         f3_pkt5 = Ether(dst='00:00:0a:00:02:02', src=get_if_hwaddr(iface)) / IP(dst=dst_addr) / TCP(dport=9786, sport=1080) / '\x04\x04\x05\x05'
         sendp(f3_pkt5, iface = iface)
 
-        f3_pkt6 = Ether(dst='00:00:0a:00:02:02', src=get_if_hwaddr(iface)) / IP(dst=dst_addr) / TCP(dport=9786, sport=1080) / '\x0a\x0a\x0a\x0a'
-        sendp(f3_pkt6, iface = iface)
 
