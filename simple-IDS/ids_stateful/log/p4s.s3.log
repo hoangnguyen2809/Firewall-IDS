@@ -1,41 +1,43 @@
 Warning: you requested the nanomsg event logger, but bmv2 was compiled without -DBMELOG, and the event logger cannot be activated
 Calling target program-options parser
-[01:35:07.059] [bmv2] [D] [thread 12835] Set default default entry for table 'tbl_compute_hashes': IDS_Ingress.compute_hashes - 
-[01:35:07.059] [bmv2] [D] [thread 12835] Set default default entry for table 'IDS_Ingress.flows': IDS_Ingress.get_flow_status - 
-[01:35:07.059] [bmv2] [D] [thread 12835] Set default default entry for table 'IDS_Ingress.build_pattern': IDS_Ingress._build_pattern - 
-[01:35:07.059] [bmv2] [D] [thread 12835] Set default default entry for table 'IDS_Ingress.signatures': NoAction - 
-[01:35:07.059] [bmv2] [D] [thread 12835] Set default default entry for table 'IDS_Ingress.ipv4_lpm': NoAction - 
-[01:35:07.059] [bmv2] [D] [thread 12835] Set default default entry for table 'tbl_increment_counter': IDS_Ingress.increment_counter - 
+[03:24:53.310] [bmv2] [D] [thread 21939] Set default default entry for table 'tbl_compute_hashes': IDS_Ingress.compute_hashes - 
+[03:24:53.310] [bmv2] [D] [thread 21939] Set default default entry for table 'IDS_Ingress.flows': IDS_Ingress.get_flow_status - 
+[03:24:53.310] [bmv2] [D] [thread 21939] Set default default entry for table 'IDS_Ingress.build_pattern': IDS_Ingress._build_pattern - 
+[03:24:53.310] [bmv2] [D] [thread 21939] Set default default entry for table 'IDS_Ingress.signatures': NoAction - 
+[03:24:53.310] [bmv2] [D] [thread 21939] Set default default entry for table 'IDS_Ingress.ipv4_lpm': NoAction - 
+[03:24:53.310] [bmv2] [D] [thread 21939] Set default default entry for table 'tbl_increment_counter': IDS_Ingress.increment_counter - 
+[03:24:53.311] [bmv2] [D] [thread 21939] Set default default entry for table 'tbl_increment_counter_0': IDS_Ingress.increment_counter - 
 Adding interface s3-eth1 as port 1
-[01:35:07.063] [bmv2] [D] [thread 12835] Adding interface s3-eth1 as port 1
+[03:24:53.315] [bmv2] [D] [thread 21939] Adding interface s3-eth1 as port 1
 Adding interface s3-eth2 as port 2
-[01:35:07.089] [bmv2] [D] [thread 12835] Adding interface s3-eth2 as port 2
+[03:24:53.363] [bmv2] [D] [thread 21939] Adding interface s3-eth2 as port 2
 Adding interface s3-eth3 as port 3
-[01:35:07.154] [bmv2] [D] [thread 12835] Adding interface s3-eth3 as port 3
-[01:35:07.194] [bmv2] [I] [thread 12835] Starting Thrift server on port 9092
-[01:35:07.194] [bmv2] [I] [thread 12835] Thrift server was started
-[01:35:07.681] [bmv2] [T] [thread 12933] bm_get_config
-[01:35:07.685] [bmv2] [T] [thread 12933] bm_set_default_action
-[01:35:07.685] [bmv2] [D] [thread 12933] Set default entry for table 'IDS_Ingress.ipv4_lpm': IDS_Ingress.drop - 
-[01:35:07.686] [bmv2] [T] [thread 12933] bm_table_add_entry
-[01:35:07.686] [bmv2] [D] [thread 12933] Entry 0 added to table 'IDS_Ingress.ipv4_lpm'
-[01:35:07.686] [bmv2] [D] [thread 12933] Dumping entry 0
+[03:24:53.387] [bmv2] [D] [thread 21939] Adding interface s3-eth3 as port 3
+[03:24:53.412] [bmv2] [I] [thread 21939] Starting Thrift server on port 9092
+[03:24:53.413] [bmv2] [I] [thread 21939] Thrift server was started
+[03:24:53.878] [bmv2] [T] [thread 22057] bm_get_config
+[03:24:53.881] [bmv2] [T] [thread 22057] bm_set_default_action
+[03:24:53.881] [bmv2] [D] [thread 22057] Set default entry for table 'IDS_Ingress.ipv4_lpm': IDS_Ingress.drop - 
+[03:24:53.882] [bmv2] [T] [thread 22057] bm_table_add_entry
+[03:24:53.882] [bmv2] [D] [thread 22057] Entry 0 added to table 'IDS_Ingress.ipv4_lpm'
+[03:24:53.882] [bmv2] [D] [thread 22057] Dumping entry 0
 Match key:
 * hdr.ipv4.dstAddr    : LPM       0a000303/32
 Action entry: IDS_Ingress.ipv4_forward - a000303,1,
 
-[01:35:07.687] [bmv2] [T] [thread 12933] bm_table_add_entry
-[01:35:07.687] [bmv2] [D] [thread 12933] Entry 1 added to table 'IDS_Ingress.ipv4_lpm'
-[01:35:07.687] [bmv2] [D] [thread 12933] Dumping entry 1
+[03:24:53.883] [bmv2] [T] [thread 22057] bm_table_add_entry
+[03:24:53.883] [bmv2] [D] [thread 22057] Entry 1 added to table 'IDS_Ingress.ipv4_lpm'
+[03:24:53.883] [bmv2] [D] [thread 22057] Dumping entry 1
 Match key:
 * hdr.ipv4.dstAddr    : LPM       0a000304/32
 Action entry: IDS_Ingress.ipv4_forward - a000304,2,
 
-[01:35:07.687] [bmv2] [T] [thread 12933] bm_table_add_entry
-[01:35:07.687] [bmv2] [D] [thread 12933] Entry 2 added to table 'IDS_Ingress.ipv4_lpm'
-[01:35:07.687] [bmv2] [D] [thread 12933] Dumping entry 2
+[03:24:53.884] [bmv2] [T] [thread 22057] bm_table_add_entry
+[03:24:53.884] [bmv2] [D] [thread 22057] Entry 2 added to table 'IDS_Ingress.ipv4_lpm'
+[03:24:53.884] [bmv2] [D] [thread 22057] Dumping entry 2
 Match key:
 * hdr.ipv4.dstAddr    : LPM       0a000000/16
 Action entry: IDS_Ingress.ipv4_forward - 10300,3,
 
+open: No such file or directory
 open: No such file or directory

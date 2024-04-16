@@ -5,9 +5,8 @@
       "id" : 0,
       "fields" : [
         ["current_flow_0", 1, false],
-        ["hashed_int_0", 32, false],
+        ["hashed_val_0", 32, false],
         ["temp_0", 32, false],
-        ["temp_1", 32, false],
         ["_padding_0", 7, false]
       ]
     },
@@ -270,7 +269,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-        "line" : 287,
+        "line" : 280,
         "column" : 8,
         "source_fragment" : "IDS_Deparser"
       },
@@ -339,7 +338,7 @@
       "id" : 1,
       "source_info" : {
         "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-        "line" : 264,
+        "line" : 257,
         "column" : 8,
         "source_fragment" : "update_checksum( ..."
       },
@@ -424,14 +423,14 @@
             },
             {
               "type" : "field",
-              "value" : ["scalars", "hashed_int_0"]
+              "value" : ["scalars", "hashed_val_0"]
             }
           ],
           "source_info" : {
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
             "line" : 142,
             "column" : 8,
-            "source_fragment" : "counters.read(temp, hashed_int)"
+            "source_fragment" : "counters.read(temp, hashed_val)"
           }
         },
         {
@@ -485,7 +484,7 @@
             },
             {
               "type" : "field",
-              "value" : ["scalars", "hashed_int_0"]
+              "value" : ["scalars", "hashed_val_0"]
             },
             {
               "type" : "field",
@@ -496,14 +495,109 @@
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
             "line" : 144,
             "column" : 8,
-            "source_fragment" : "counters.write(hashed_int, temp)"
+            "source_fragment" : "counters.write(hashed_val, temp)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "IDS_Ingress.increment_counter",
+      "id" : 3,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "temp_0"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "IDS_Ingress.counters"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "hashed_val_0"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
+            "line" : 142,
+            "column" : 8,
+            "source_fragment" : "counters.read(temp, hashed_val)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "temp_0"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["scalars", "temp_0"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x00000001"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
+            "line" : 143,
+            "column" : 8,
+            "source_fragment" : "temp = temp + 1"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "IDS_Ingress.counters"
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "hashed_val_0"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "temp_0"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
+            "line" : 144,
+            "column" : 8,
+            "source_fragment" : "counters.write(hashed_val, temp)"
           }
         }
       ]
     },
     {
       "name" : "IDS_Ingress.drop",
-      "id" : 3,
+      "id" : 4,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -525,7 +619,7 @@
     },
     {
       "name" : "IDS_Ingress.signature_hit",
-      "id" : 4,
+      "id" : 5,
       "runtime_data" : [
         {
           "name" : "egress_port",
@@ -553,94 +647,6 @@
           }
         },
         {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "temp_1"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "IDS_Ingress.counters"
-            },
-            {
-              "type" : "field",
-              "value" : ["scalars", "hashed_int_0"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 161,
-            "column" : 8,
-            "source_fragment" : "counters.read(temp, hashed_int)"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "temp_1"]
-            },
-            {
-              "type" : "expression",
-              "value" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "&",
-                  "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "+",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["scalars", "temp_1"]
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0x00000001"
-                      }
-                    }
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0xffffffff"
-                  }
-                }
-              }
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 162,
-            "column" : 8,
-            "source_fragment" : "temp = temp + 1"
-          }
-        },
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "IDS_Ingress.counters"
-            },
-            {
-              "type" : "field",
-              "value" : ["scalars", "hashed_int_0"]
-            },
-            {
-              "type" : "field",
-              "value" : ["scalars", "temp_1"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 163,
-            "column" : 8,
-            "source_fragment" : "counters.write(hashed_int, temp)"
-          }
-        },
-        {
           "op" : "register_write",
           "parameters" : [
             {
@@ -649,7 +655,7 @@
             },
             {
               "type" : "field",
-              "value" : ["scalars", "hashed_int_0"]
+              "value" : ["scalars", "hashed_val_0"]
             },
             {
               "type" : "hexstr",
@@ -658,16 +664,16 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 165,
+            "line" : 155,
             "column" : 8,
-            "source_fragment" : "blocked_flows.write(hashed_int, 1)"
+            "source_fragment" : "blocked_flows.write(hashed_val, 1)"
           }
         }
       ]
     },
     {
       "name" : "IDS_Ingress.get_flow_status",
-      "id" : 5,
+      "id" : 6,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -683,21 +689,21 @@
             },
             {
               "type" : "field",
-              "value" : ["scalars", "hashed_int_0"]
+              "value" : ["scalars", "hashed_val_0"]
             }
           ],
           "source_info" : {
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 172,
+            "line" : 162,
             "column" : 8,
-            "source_fragment" : "blocked_flows.read(current_flow, hashed_int)"
+            "source_fragment" : "blocked_flows.read(current_flow, hashed_val)"
           }
         }
       ]
     },
     {
       "name" : "IDS_Ingress.compute_hashes",
-      "id" : 6,
+      "id" : 7,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -705,7 +711,7 @@
           "parameters" : [
             {
               "type" : "field",
-              "value" : ["scalars", "hashed_int_0"]
+              "value" : ["scalars", "hashed_val_0"]
             },
             {
               "type" : "hexstr",
@@ -722,16 +728,16 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 176,
+            "line" : 167,
             "column" : 8,
-            "source_fragment" : "hash(hashed_int, HashAlgorithm.crc32, (bit<16>)0 ..."
+            "source_fragment" : "hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0 ..."
           }
         }
       ]
     },
     {
       "name" : "IDS_Ingress.ipv4_forward",
-      "id" : 7,
+      "id" : 8,
       "runtime_data" : [
         {
           "name" : "dstAddr",
@@ -757,7 +763,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 207,
+            "line" : 198,
             "column" : 8,
             "source_fragment" : "hdr.ethernet.srcAddr = hdr.ethernet.dstAddr"
           }
@@ -776,7 +782,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 210,
+            "line" : 201,
             "column" : 8,
             "source_fragment" : "hdr.ethernet.dstAddr = dstAddr"
           }
@@ -795,7 +801,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 213,
+            "line" : 204,
             "column" : 8,
             "source_fragment" : "standard_metadata.egress_spec = port"
           }
@@ -837,7 +843,7 @@
           ],
           "source_info" : {
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 216,
+            "line" : 207,
             "column" : 8,
             "source_fragment" : "hdr.ipv4.ttl = hdr.ipv4.ttl -1"
           }
@@ -862,7 +868,7 @@
           "id" : 0,
           "source_info" : {
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 235,
+            "line" : 226,
             "column" : 12,
             "source_fragment" : "compute_hashes(hdr.ipv4.srcAddr, hdr.ipv4.dstAddr, hdr.tcp.srcPort, hdr.tcp.dstPort)"
           },
@@ -873,14 +879,14 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [6],
+          "action_ids" : [7],
           "actions" : ["IDS_Ingress.compute_hashes"],
           "base_default_next" : "IDS_Ingress.flows",
           "next_tables" : {
             "IDS_Ingress.compute_hashes" : "IDS_Ingress.flows"
           },
           "default_entry" : {
-            "action_id" : 6,
+            "action_id" : 7,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
@@ -891,7 +897,7 @@
           "id" : 1,
           "source_info" : {
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 182,
+            "line" : 173,
             "column" : 10,
             "source_fragment" : "flows"
           },
@@ -902,14 +908,14 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [5],
+          "action_ids" : [6],
           "actions" : ["IDS_Ingress.get_flow_status"],
           "base_default_next" : "node_5",
           "next_tables" : {
             "IDS_Ingress.get_flow_status" : "node_5"
           },
           "default_entry" : {
-            "action_id" : 5,
+            "action_id" : 6,
             "action_const" : false,
             "action_data" : [],
             "action_entry_const" : false
@@ -920,7 +926,7 @@
           "id" : 2,
           "source_info" : {
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 191,
+            "line" : 182,
             "column" : 10,
             "source_fragment" : "signatures"
           },
@@ -938,7 +944,7 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [4, 0],
+          "action_ids" : [5, 0],
           "actions" : ["IDS_Ingress.signature_hit", "NoAction"],
           "base_default_next" : null,
           "next_tables" : {
@@ -957,7 +963,7 @@
           "id" : 3,
           "source_info" : {
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 219,
+            "line" : 210,
             "column" : 10,
             "source_fragment" : "ipv4_lpm"
           },
@@ -975,7 +981,7 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [7, 3, 1],
+          "action_ids" : [8, 4, 1],
           "actions" : ["IDS_Ingress.ipv4_forward", "IDS_Ingress.drop", "NoAction"],
           "base_default_next" : null,
           "next_tables" : {
@@ -995,8 +1001,8 @@
           "id" : 4,
           "source_info" : {
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 243,
-            "column" : 16,
+            "line" : 234,
+            "column" : 20,
             "source_fragment" : "increment_counter()"
           },
           "key" : [],
@@ -1018,6 +1024,35 @@
             "action_data" : [],
             "action_entry_const" : true
           }
+        },
+        {
+          "name" : "tbl_increment_counter_0",
+          "id" : 5,
+          "source_info" : {
+            "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
+            "line" : 236,
+            "column" : 16,
+            "source_fragment" : "increment_counter()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [3],
+          "actions" : ["IDS_Ingress.increment_counter"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "IDS_Ingress.increment_counter" : null
+          },
+          "default_entry" : {
+            "action_id" : 3,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
         }
       ],
       "action_profiles" : [],
@@ -1027,7 +1062,7 @@
           "id" : 0,
           "source_info" : {
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 233,
+            "line" : 224,
             "column" : 12,
             "source_fragment" : "hdr.ipv4.isValid()"
           },
@@ -1050,7 +1085,7 @@
           "id" : 1,
           "source_info" : {
             "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-            "line" : 239,
+            "line" : 230,
             "column" : 16,
             "source_fragment" : "current_flow == 0"
           },
@@ -1068,8 +1103,8 @@
               }
             }
           },
-          "false_next" : null,
-          "true_next" : "IDS_Ingress.signatures"
+          "true_next" : "IDS_Ingress.signatures",
+          "false_next" : "tbl_increment_counter_0"
         }
       ]
     },
@@ -1078,7 +1113,7 @@
       "id" : 1,
       "source_info" : {
         "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-        "line" : 252,
+        "line" : 245,
         "column" : 8,
         "source_fragment" : "IDS_Egress"
       },
@@ -1094,7 +1129,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/p4/p4-firewall-ids/simple-IDS/ids_stateless/p4src/program.p4",
-        "line" : 264,
+        "line" : 257,
         "column" : 8,
         "source_fragment" : "update_checksum( ..."
       },

@@ -1021,11 +1021,6 @@ control IDS_Ingress(inout headers hdr,
         //when a pattern is found in across consecutive FLOW_PKT_THRESHOLD packets
         standard_metadata.egress_spec = egress_port;
 
-        bit<32> temp;
-        counters.read(temp, hashed_val);
-        temp = temp + 1;
-        counters.write(hashed_val, temp);
-
         blocked_flows.write(hashed_val, 1);
         current_flow = 1;
     }
@@ -1122,6 +1117,8 @@ control IDS_Ingress(inout headers hdr,
                 build_pattern.apply();
                 if (signatures.apply().miss) //if signatures apply miss -> forward using ipv4
                     ipv4_lpm.apply();
+                else
+                    increment_counter();
             }
             else
                 increment_counter(); //increment number of dropped packet if hit
