@@ -135,13 +135,17 @@ control IDS_Ingress(inout headers hdr,
     register<bit<32>>(FLOW_ENTRIES) counters; //number of packet dropped per flow
     register<bit<1>>(FLOW_ENTRIES) blocked_flows; 
     bit<1> current_flow; //bit to check status of current flow
-    bit<PATTERN_WIDTH> hashed_val; // get hashed result from crc32
+    bit<PATTERN_WIDTH> hashed_int; // get hashed result from crc32
 
     action increment_counter() {
         bit<PATTERN_WIDTH> temp;
-        counters.read(temp, hashed_val);
+        hash(hashed_int, HashAlgorithm.crc32, (bit<16>)0
+        , {hdr.ipv4.srcAddr, hdr.ipv4.dstAddr, hdr.tcp.srcPort, hdr.tcp.dstPort, hdr.ipv4.protocol}
+        , (bit<32>)FLOW_ENTRIES);
+
+        counters.read(temp, hashed_int);
         temp = temp + 1;
-        counters.write(hashed_val, temp);
+        counters.write(hashed_int, temp);
     }
 
     action drop() {
@@ -153,24 +157,22 @@ control IDS_Ingress(inout headers hdr,
         standard_metadata.egress_spec = egress_port;
 
         bit<PATTERN_WIDTH> temp;
-        counters.read(temp, hashed_val);
-        temp = temp + 1;
-        counters.write(hashed_val, temp);
+        hash(hashed_int, HashAlgorithm.crc32, (bit<16>)0
+        , {hdr.ipv4.srcAddr, hdr.ipv4.dstAddr, hdr.tcp.srcPort, hdr.tcp.dstPort, hdr.ipv4.protocol}
+        , (bit<32>)FLOW_ENTRIES);
 
-        blocked_flows.write(hashed_val, 1);
+        blocked_flows.write(hashed_int, 1);
         current_flow = 1;
     }
 
     action get_flow_status() {
         //Calculate the index in register array corresponding to this flow
         //Read from a register whether the flow is blocked
-        blocked_flows.read(current_flow, hashed_val);
-    }
-
-    action compute_hashes(ip4Addr_t ipAddr1, ip4Addr_t ipAddr2, bit<16> port1, bit<16> port2){
-        hash(hashed_val, HashAlgorithm.crc32, (bit<16>)0
-        , {ipAddr1, ipAddr2, port1, port2, hdr.ipv4.protocol}
+        hash(hashed_int, HashAlgorithm.crc32, (bit<16>)0
+        , {hdr.ipv4.srcAddr, hdr.ipv4.dstAddr, hdr.tcp.srcPort, hdr.tcp.dstPort, hdr.ipv4.protocol}
         , (bit<32>)FLOW_ENTRIES);
+
+        blocked_flows.read(current_flow, hashed_int);
     }
 
     // `flows` is a keyless table used to execute a single action: get_flow_status().
@@ -226,14 +228,14 @@ control IDS_Ingress(inout headers hdr,
 
     apply {
         if (hdr.ipv4.isValid()) {
-            //compute hash
-            compute_hashes(hdr.ipv4.srcAddr, hdr.ipv4.dstAddr, hdr.tcp.srcPort, hdr.tcp.dstPort);
             //get flow status
             flows.apply();
             //check if flow isn't blocked
             if (current_flow == 0)
                 if (signatures.apply().miss)//if signatures apply miss -> perform ipv4 forwarding
                     ipv4_lpm.apply();
+                else
+                    increment_counter();
             else
                 increment_counter(); //increment number of dropped packets
         }
