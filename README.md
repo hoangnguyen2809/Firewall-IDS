@@ -17,7 +17,12 @@
 - Stateless IDS detects intrusions based on the payload of a single TCP packet.
 - Stateful IDS detects intrusions based on the payloads of multiple packets on the same flow.
 
-  
+
+![Alt text](https://raw.githubusercontent.com/hoangnguyen2809/Firewall-IDS/master/diagram/ids.png)
 
 
+### Build
+- start the network `sudo python network.py`
+- start the controller `sudo python controller.py`
+- use mininet cli to experiment with the network traffic
 
